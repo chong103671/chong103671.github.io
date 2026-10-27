@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>103671 - Chong Ren Li</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            scroll-margin-top: 72px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            font-family: Nunito, sans-serif;
+        }
+
+        .headbar {
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: grey;
+            height: 72px;
+        }
+
+        .name {
+            text-align: center;
+            font-size: 3.5rem;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 100px;
+            padding: 20px;
+        }
+
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/Ai Hand.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 72px;
+            position: relative;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .hero-section h2 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 70px;
+        }
+
+        .tagline-text {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .repeating-bg-section {
+            background-image: url('images/background-image.jpg');
+            background-repeat: repeat;
+            background-size: 100%;
+
+            padding: 80px 20px;
+            min-height: 5000px;
+            text-align: center;
+        }
+
+        .about-card {
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            width: 100%;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #d1d1d1;
+        }
+
+        .about-img-container {
+            flex-shrink: 0;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            margin-top: 40px;
+            padding: 12px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3 ease, transform 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: #d1d1d1;
+            transform: translateY(-2px);
+        }
+
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        .contact-section {
+            background-color: #111111;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 400px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            /* Starts slightly lower */
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+            /* Moves to its original position */
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="headbar" class="headbar">
+        <div class="middle-section">
+
+        </div>
+    </section>
+
+    <section id="home" class="hero-section">
+        <h1>Chong Ren Li</h1>
+        <h2>Multimedia Computing Student</h2>
+        <p class="tagline-text">Turning Ideas into Interactive & Responsive Web Solutions</p>
+    </section>
+
+
+    <section id="about" class="repeating-bg-section">
+        <div class="about-card fade-in">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>Hello! I am Chong Ren Li, a Multimedia Computing student at UNIMAS. I have a deep passion for web
+                    development, interactive user interfaces, and blending creative design with functional code. I am
+                    always eager to learn new technologies and build responsive, user-friendly digital experiences.</p>
+
+                <a href="#contact" class="contact-btn">Contact Me</a>
+            </div>
+
+            <div class="about-img-container">
+                <img class="profile-img" src="images/profile-img.jpg">
+            </div>
+        </div>
+
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Get In Touch</h2>
+        <p>Let's build something great together.</p>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const observerOptions = {
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+
+</body>
+
+
+</html>
