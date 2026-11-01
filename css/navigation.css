@@ -1,0 +1,70 @@
+/* Fixed Headbar / Desktop Navigation */
+.headbar {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #111111;
+    height: 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.nav-left {
+    width: 80px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    color: #d1d1d1;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    width: 80px;
+    justify-content: flex-end;
+}
+
+.social-icon-btn {
+    color: #d1d1d1;
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icon-btn:hover {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
+/* Hamburger Menu Button (Hidden on Desktop) */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 1100;
+    padding: 5px;
+}

@@ -5,461 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>103671 - Chong Ren Li</title>
+
+    <!-- Google Fonts & Font Awesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
-
-    <!-- Font Awesome for Social & Email Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Nunito, sans-serif;
-        }
-
-        /* Fixed Headbar / Navigation */
-        .headbar {
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #111111;
-            height: 48px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 30px;
-        }
-
-        .nav-left {
-            width: 80px;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .nav-link {
-            color: #d1d1d1;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #ffffff;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            width: 80px;
-            justify-content: flex-end;
-        }
-
-        .social-icon-btn {
-            color: #d1d1d1;
-            font-size: 1.25rem;
-            text-decoration: none;
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
-
-        .social-icon-btn:hover {
-            color: #ffffff;
-            transform: scale(1.15);
-        }
-
-        .hero-section {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/Ai Hand.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 420px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin-top: 48px;
-            position: relative;
-        }
-
-        .hero-section h1 {
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .hero-section h2 {
-            font-size: 1.8rem;
-            color: white;
-            margin-bottom: 70px;
-        }
-
-        .tagline-text {
-            font-size: 1.8rem;
-            color: white;
-        }
-
-        .repeating-bg-section {
-            background-image: url('images/background-image.jpg');
-            background-repeat: repeat;
-            background-size: 100%;
-            padding-top: 80px;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-bottom: 80px;
-            text-align: center;
-        }
-
-        .about-card {
-            background-color: rgba(0, 0, 0, 0.85);
-            color: white;
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 40px;
-            text-align: left;
-            border-radius: 8px;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #d1d1d1;
-        }
-
-        .about-img-container {
-            flex-shrink: 0;
-        }
-
-        .contact-btn {
-            display: inline-block;
-            background-color: white;
-            color: black;
-            margin-top: 40px;
-            padding: 12px 28px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .contact-btn:hover {
-            background-color: #d1d1d1;
-            transform: translateY(-2px);
-        }
-
-        .profile-img {
-            width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid white;
-        }
-
-        /* Projects Section & Carousel Styles */
-        .projects-wrapper {
-            margin: 0 auto;
-            color: white;
-        }
-
-        .projects-wrapper h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .project-card {
-            background-color: rgba(0, 0, 0, 0.85);
-            padding: 30px;
-            border-radius: 8px;
-            text-align: left;
-        }
-
-        .media-carousel {
-            position: relative;
-            width: 100%;
-            min-height: 320px;
-            background-color: #000;
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .media-slides {
-            display: grid;
-            width: 100%;
-            height: 100%;
-            min-height: 320px;
-        }
-
-        .media-slide {
-            grid-area: 1 / 1;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-        }
-
-        .media-slide.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .media-slide img,
-        .media-slide video {
-            width: 100%;
-            height: 100%;
-            max-height: 480px;
-            object-fit: contain;
-            display: block;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            border: none;
-            font-size: 1.2rem;
-            padding: 10px 14px;
-            cursor: pointer;
-            border-radius: 4px;
-            z-index: 10;
-            transition: background-color 0.2s ease;
-        }
-
-        .carousel-btn:hover {
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .prev-btn {
-            left: 10px;
-        }
-
-        .next-btn {
-            right: 10px;
-        }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            z-index: 10;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .dot.active {
-            background-color: white;
-        }
-
-        .project-info h3 {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            color: #ffffff;
-        }
-
-        .project-info p {
-            font-size: 1rem;
-            color: #d1d1d1;
-            line-height: 1.6;
-        }
-
-        /* Contact Section Styles */
-        .contact-section {
-            background-color: #111111;
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .contact-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .contact-subtext {
-            font-size: 1.1rem;
-            color: #d1d1d1;
-            margin-bottom: 25px;
-        }
-
-        .contact-buttons-group {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 35px;
-        }
-
-        .direct-contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .direct-contact-btn:hover {
-            background-color: white;
-            color: black;
-            transform: translateY(-2px);
-        }
-
-        .contact-form {
-            display: flex;
-            gap: 10px;
-            max-width: 450px;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .email-input {
-            flex: 1;
-            padding: 12px 16px;
-            border-radius: 5px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background-color: rgba(255, 255, 255, 0.05);
-            color: white;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .email-input::placeholder {
-            color: #888888;
-        }
-
-        .email-input:focus {
-            border-color: #ffffff;
-        }
-
-        .subscribe-btn {
-            background-color: white;
-            color: black;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .subscribe-btn:hover {
-            background-color: #d1d1d1;
-            transform: translateY(-2px);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .fade-in.appear {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            .about-card {
-                flex-direction: column-reverse;
-                text-align: center;
-                padding: 30px 20px;
-            }
-
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-section h2 {
-                font-size: 1.4rem;
-            }
-        }
-    </style>
+    <!-- Modular Stylesheets -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/project.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
 
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar & Mobile Sidebar -->
     <nav class="headbar">
+        <!-- Hamburger Icon on Top Left for Mobile -->
+        <button id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle Navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
         <div class="nav-left"></div>
 
-        <div class="nav-container">
+        <!-- Navigation Links Container -->
+        <div id="navContainer" class="nav-container">
             <a href="#home" class="nav-link">Home</a>
             <a href="#about" class="nav-link">About Me</a>
             <a href="#personal-projects" class="nav-link">Projects</a>
             <a href="#contact" class="nav-link">Contact Me</a>
         </div>
 
+        <!-- Right Side Social Icons -->
         <div class="nav-right">
             <a href="https://www.linkedin.com/in/chong-ren-li-9b0299346/" target="_blank" rel="noopener noreferrer"
                 class="social-icon-btn" aria-label="LinkedIn">
@@ -506,19 +89,34 @@
                 <div class="project-card">
                     <div class="media-carousel">
                         <div class="media-slides">
-                            <div class="media-slide active" data-title="Campus Guide App"
-                                data-desc="An interactive guide application designed with custom offline asset rendering and feature toggles.">
+                            <div class="media-slide active" data-title="Simple Paint Program"
+                                data-desc="A lightweight 2D paint application built with C++ and OpenGL, featuring an intuitive interface and essential drawing tools.">
                                 <img src="images/Project 1.png" alt="Project 1 Screenshot">
                             </div>
 
-                            <div class="media-slide" data-title="LU5 Campus Gallery"
-                                data-desc="A mobile software prototype showcasing offline image rendering arrays and interactive favorite-toggle features.">
+                            <div class="media-slide" data-title="Snake Guardian"
+                                data-desc="An immersive 3D arcade game developed in C++ and OpenGL, featuring dynamic gameplay mechanics and responsive rendering.">
                                 <img src="images/Project 2.png" alt="Project 2 Screenshot">
                             </div>
 
-                            <div class="media-slide" data-title="Personal Portfolio Website"
-                                data-desc="A fully responsive portfolio web project engineered with clean layouts, custom UI elements, and deployed via GitHub Pages.">
+                            <div class="media-slide" data-title="Student Collabaration Platform"
+                                data-desc="A robust Python-based CLI application designed to streamline student communication and project coordination.">
                                 <img src="images/Project 3.png" alt="Project 3 Screenshot">
+                            </div>
+
+                            <div class="media-slide" data-title="Borneo Cultures Museum Ticketing System"
+                                data-desc="An efficient C-based CLI ticketing and reservation system tailored for cultural museum management.">
+                                <img src="images/Project 4.png" alt="Project 4 Screenshot">
+                            </div>
+
+                            <div class="media-slide" data-title="Life Below Sea Quiz"
+                                data-desc="An interactive Java quiz application focused on marine biodiversity, designed to raise awareness about ocean conservation.">
+                                <img src="images/Project 5.png" alt="Project 5 Screenshot">
+                            </div>
+
+                            <div class="media-slide" data-title="Babarian Blaster"
+                                data-desc="A strategic tower defense game developed in the Godot Engine using GDScript.">
+                                <img src="images/Project 6.png" alt="Project 6 Screenshot">
                             </div>
                         </div>
 
@@ -531,14 +129,18 @@
                             <span class="dot active"></span>
                             <span class="dot"></span>
                             <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
                         </div>
                     </div>
 
-                    <!-- Dynamic Project Content -->
+                    <!-- Project info -->
                     <div class="project-info">
-                        <h3 class="project-title">Campus Guide App</h3>
-                        <p class="project-desc">An interactive guide application designed with custom offline asset
-                            rendering and feature toggles.</p>
+                        <h3 class="project-title">Simple Paint Program</h3>
+                        <p class="project-desc">A basic paint application built with C++ and openGL, featuring a
+                            simple
+                            UI and essential drawing functionalities.</p>
                     </div>
                 </div>
 
@@ -548,32 +150,83 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-        <h2>Get In Touch</h2>
-        <p class="contact-subtext">Let's build something great together.</p>
+        <div class="fade-in">
+            <h2>Get In Touch</h2>
+            <p class="contact-subtext">Let's build something great together.</p>
 
-        <!-- Direct Contact Buttons -->
-        <p style="color: #d1d1d1; margin-bottom: 15px; font-weight: 600;">Reach out me directly at:</p>
-        <div class="contact-buttons-group">
-            <a href="https://www.linkedin.com/in/chong-ren-li-9b0299346/" target="_blank" rel="noopener noreferrer"
-                class="direct-contact-btn">
-                <i class="fab fa-linkedin-in"></i> LinkedIn
-            </a>
-            <a href="mailto:your.email@gmail.com" class="direct-contact-btn">
-                <i class="fas fa-envelope"></i> Gmail
-            </a>
-        </div>
+            <!-- Contact Buttons -->
+            <p style="color: #d1d1d1; margin-bottom: 15px; font-weight: 600;">Reach out me directly at:</p>
+            <div class="contact-buttons-group">
+                <a href="https://www.linkedin.com/in/chong-ren-li-9b0299346/" target="_blank" rel="noopener noreferrer"
+                    class="direct-contact-btn">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="mailto:your.email@gmail.com" class="direct-contact-btn">
+                    <i class="fas fa-envelope"></i> Gmail
+                </a>
+            </div>
 
-        <!-- Subscription Form -->
-        <p style="color: #d1d1d1; margin-bottom: 12px; font-size: 0.95rem;">Or enter your email for updates:</p>
-        <div class="contact-form" onsubmit="event.preventDefault();">
-            <input type="email" class="email-input" placeholder="Enter Your Email" required>
-            <button type="button" class="subscribe-btn">Subscribe</button>
+            <!-- Subscription Form -->
+            <p style="color: #d1d1d1; margin-bottom: 12px; font-size: 0.95rem;">Or enter your email for updates:</p>
+            <div class="contact-form">
+                <input type="email" id="emailInput" class="email-input" placeholder="Enter Your Email" required>
+                <button type="button" id="subscribeBtn" class="subscribe-btn">Subscribe</button>
+            </div>
         </div>
     </section>
 
-    <!-- JavaScript Controllers -->
+    <!-- Success Popup -->
+    <div id="subscribeModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Thank You!</h3>
+            <p id="modalMessage">You have successfully subscribed for updates.</p>
+            <button type="button" id="closeModalBtn" class="modal-close-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Invalid Email Popup -->
+    <div id="errorModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 style="color: #ff6b6b;">Invalid Email</h3>
+            <p id="errorMessage">Please enter a valid email address before subscribing.</p>
+            <button type="button" id="closeErrorModalBtn" class="modal-close-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Mobile Hamburger Sidebar Toggle
+            const hamburgerBtn = document.getElementById("hamburgerBtn");
+            const navContainer = document.getElementById("navContainer");
+            const navLinks = document.querySelectorAll(".nav-link");
+
+            if (hamburgerBtn && navContainer) {
+                hamburgerBtn.addEventListener("click", () => {
+                    navContainer.classList.toggle("mobile-active");
+                    const icon = hamburgerBtn.querySelector("i");
+                    if (navContainer.classList.contains("mobile-active")) {
+                        icon.classList.remove("fa-bars");
+                        icon.classList.add("fa-xmark");
+                    } else {
+                        icon.classList.remove("fa-xmark");
+                        icon.classList.add("fa-bars");
+                    }
+                });
+
+                // Close sidebar when clicking any navigation link on mobile
+                navLinks.forEach(link => {
+                    link.addEventListener("click", () => {
+                        if (navContainer.classList.contains("mobile-active")) {
+                            navContainer.classList.remove("mobile-active");
+                            const icon = hamburgerBtn.querySelector("i");
+                            icon.classList.remove("fa-xmark");
+                            icon.classList.add("fa-bars");
+                        }
+                    });
+                });
+            }
+
             // Fade-in Intersection Observer
             const observerOptions = {
                 threshold: 0.2
@@ -645,6 +298,50 @@
                     dot.addEventListener("click", () => showSlide(i));
                 });
             });
+
+            // Subscription Popup Logic
+            const subscribeBtn = document.getElementById("subscribeBtn");
+            const emailInput = document.getElementById("emailInput");
+
+            const modal = document.getElementById("subscribeModal");
+            const closeModalBtn = document.getElementById("closeModalBtn");
+            const modalMessage = document.getElementById("modalMessage");
+
+            const errorModal = document.getElementById("errorModal");
+            const closeErrorModalBtn = document.getElementById("closeErrorModalBtn");
+
+            if (subscribeBtn && emailInput && modal && errorModal) {
+                subscribeBtn.addEventListener("click", () => {
+                    const emailValue = emailInput.value.trim();
+                    if (emailValue !== "" && emailInput.checkValidity()) {
+                        modalMessage.textContent = `Thank you! Updates will be sent to ${emailValue}.`;
+                        modal.classList.add("active");
+                        emailInput.value = "";
+                    } else {
+                        errorModal.classList.add("active");
+                    }
+                });
+
+                closeModalBtn.addEventListener("click", () => {
+                    modal.classList.remove("active");
+                });
+
+                closeErrorModalBtn.addEventListener("click", () => {
+                    errorModal.classList.remove("active");
+                });
+
+                modal.addEventListener("click", (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove("active");
+                    }
+                });
+
+                errorModal.addEventListener("click", (e) => {
+                    if (e.target === errorModal) {
+                        errorModal.classList.remove("active");
+                    }
+                });
+            }
         });
     </script>
 
