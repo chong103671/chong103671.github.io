@@ -131,7 +131,7 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
-            transition: background-color 0.3 ease, transform 0.2s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .contact-btn:hover {
@@ -166,6 +166,22 @@
             opacity: 1;
             transform: translateY(0);
             /* Moves to its original position */
+        }
+
+        @media (max-width: 768px) {
+            .about-card {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section h2 {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
