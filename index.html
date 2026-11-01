@@ -193,18 +193,27 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript Controller -->
     <script>
+        // Wait for the DOM to fully load before executing scripts
         document.addEventListener("DOMContentLoaded", function () {
+
             // Mobile Hamburger Sidebar Toggle
             const hamburgerBtn = document.getElementById("hamburgerBtn");
             const navContainer = document.getElementById("navContainer");
             const navLinks = document.querySelectorAll(".nav-link");
 
             if (hamburgerBtn && navContainer) {
+                // Toggle mobile sidebar and change hamburger icon to close icon
                 hamburgerBtn.addEventListener("click", () => {
+
+                    // mobile-active class missing = false, mobile-active class present = true
                     navContainer.classList.toggle("mobile-active");
+
+                    // Select the <i> element inside the hamburger button to change its icon
                     const icon = hamburgerBtn.querySelector("i");
+
+                    // If active, change to X icon, else change to hamburger icon
                     if (navContainer.classList.contains("mobile-active")) {
                         icon.classList.remove("fa-bars");
                         icon.classList.add("fa-xmark");
@@ -215,6 +224,7 @@
                 });
 
                 // Close sidebar when clicking any navigation link on mobile
+                // function(link) or link =>
                 navLinks.forEach(link => {
                     link.addEventListener("click", () => {
                         if (navContainer.classList.contains("mobile-active")) {
@@ -227,21 +237,36 @@
                 });
             }
 
-            // Fade-in Intersection Observer
+            // Scroll Triggered Fade-in Animations
             const observerOptions = {
-                threshold: 0.2
+                threshold: 0.2 // 1. 20% of the element is visible
             };
 
+            // Built in API to observe when elements enter the viewport and trigger fade-in animations
             const observer = new IntersectionObserver(function (entries, observer) {
                 entries.forEach(entry => {
+
+                    // 2. Detects if the element is in the viewport
                     if (entry.isIntersecting) {
+
+                        // 3. Adds the 'appear' class to trigger the fade-in animation
                         entry.target.classList.add('appear');
+
+                        // 4. Stop observing the element after it has appeared
                         observer.unobserve(entry.target);
                     }
+
+                    // else {
+                    //     entry.target.classList.remove('appear');
+                    // }
+
                 });
             }, observerOptions);
 
+            //5. Select all elements with the 'fade-in' class and observe them
             const fadeElements = document.querySelectorAll('.fade-in');
+
+            //6. Observe each fade-in element to trigger the animation when it enters the viewport
             fadeElements.forEach(element => {
                 observer.observe(element);
             });
@@ -249,6 +274,7 @@
             // Media Carousel Controller
             const carousels = document.querySelectorAll(".media-carousel");
 
+            // Loop through each carousel and set up its functionality
             carousels.forEach(carousel => {
                 const slides = carousel.querySelectorAll(".media-slide");
                 const dots = carousel.querySelectorAll(".dot");
@@ -262,11 +288,8 @@
                 let currentIndex = 0;
 
                 function showSlide(index) {
-                    const currentVideo = slides[currentIndex].querySelector("video");
-                    if (currentVideo) {
-                        currentVideo.pause();
-                    }
 
+                    // Loop back to first or last slide if index is out of bounds
                     if (index < 0) {
                         currentIndex = slides.length - 1;
                     } else if (index >= slides.length) {
@@ -275,7 +298,20 @@
                         currentIndex = index;
                     }
 
+                    // Update the active slide and dot based on the current index
+                    /*
+                        slide.classList.toggle("active", true);
+                        If element has the "active" clas, leaves it alone
+                        If it doesn't have the "active" class, it will be added.
+                        equals to slide.classList.add("active");
+
+                        slide.classList.toggle("active", false);
+                        If element has the "active" class, it will be removed.
+                        If it doesn't have the "active" class, leaves it alone.
+                        equals to slide.classList.remove("active");
+                    */
                     slides.forEach((slide, i) => {
+                        // Toggle the "active" class on the slide if its index matches the current index
                         slide.classList.toggle("active", i === currentIndex);
                     });
 
@@ -283,6 +319,7 @@
                         dot.classList.toggle("active", i === currentIndex);
                     });
 
+                    // Update the project title and description based on the active slide's data attributes
                     const activeSlide = slides[currentIndex];
                     const newTitle = activeSlide.getAttribute("data-title");
                     const newDesc = activeSlide.getAttribute("data-desc");
@@ -294,6 +331,7 @@
                 prevBtn.addEventListener("click", () => showSlide(currentIndex - 1));
                 nextBtn.addEventListener("click", () => showSlide(currentIndex + 1));
 
+                // Allow users to click on dots to navigate to specific slides
                 dots.forEach((dot, i) => {
                     dot.addEventListener("click", () => showSlide(i));
                 });
@@ -311,17 +349,25 @@
             const closeErrorModalBtn = document.getElementById("closeErrorModalBtn");
 
             if (subscribeBtn && emailInput && modal && errorModal) {
+
                 subscribeBtn.addEventListener("click", () => {
+                    // .trim() removes whitespace
                     const emailValue = emailInput.value.trim();
+
                     if (emailValue !== "" && emailInput.checkValidity()) {
                         modalMessage.textContent = `Thank you! Updates will be sent to ${emailValue}.`;
+
+                        // Show the success modal and clear the input field
                         modal.classList.add("active");
                         emailInput.value = "";
                     } else {
+
+                        // Show the error modal for invalid email input
                         errorModal.classList.add("active");
                     }
                 });
 
+                // Close modals when clicking the close button
                 closeModalBtn.addEventListener("click", () => {
                     modal.classList.remove("active");
                 });
@@ -330,6 +376,8 @@
                     errorModal.classList.remove("active");
                 });
 
+
+                // Close modals when clicking outside the modal content
                 modal.addEventListener("click", (e) => {
                     if (e.target === modal) {
                         modal.classList.remove("active");
